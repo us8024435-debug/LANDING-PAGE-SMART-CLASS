@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+@theme {
+  /* Dynamic styles managed through custom web-properties */
+}
+
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.border-beam-element {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: calc(var(--border-width) * 1px) solid transparent;
+  
+  /* Mask configurations for seamless transparent content clip with glowing border */
+  -webkit-mask: linear-gradient(transparent, transparent) padding-box, linear-gradient(white, white) border-box;
+  mask: linear-gradient(transparent, transparent) padding-box, linear-gradient(white, white) border-box;
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+}
+
+.border-beam-element::after {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1 / 1;
+  width: calc(var(--size) * 1px);
+  animation: border-beam calc(var(--duration) * 1s) infinite linear;
+  animation-delay: var(--delay);
+  background: linear-gradient(to left, var(--color-from), var(--color-to), transparent);
+  offset-anchor: calc(var(--anchor) * 1%) 50%;
+  offset-path: rect(0 auto auto 0 round calc(var(--size) * 1px));
+}
+
+/* Style overrides and base utilities */
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Custom font font-family */
+.font-instrument {
+  font-family: 'Instrument Serif', serif;
+}
+
+/* LIQUID GLASS CSS */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.15) 80%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}

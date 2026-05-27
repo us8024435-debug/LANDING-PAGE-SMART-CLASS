@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <!-- Glass Border Gradient (Top: 45% -> Middle: 8% -> Bottom: 45%) -->
+    <linearGradient id="glassStroke" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.45" />
+    </linearGradient>
+
+    <!-- Subdued Self-Illumination Glow Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.8" result="blur" />
+      <feColorMatrix type="matrix" values="
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 1.2 0" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Center Depth Subtle Gradient -->
+    <radialGradient id="bgDepth" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="32" height="32" rx="7" fill="#0a0a0a" />
+  
+  <!-- Subtle Center Depth Glow -->
+  <rect width="32" height="32" rx="7" fill="url(#bgDepth)" />
+
+  <!-- Layer 2: Inner Glow Ring (r="10") -->
+  <circle cx="16" cy="16" r="10" fill="none" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.25" filter="url(#neonGlow)" />
+
+  <!-- Layer 1: Outer Scan Ring (r="13") -->
+  <circle cx="16" cy="16" r="13" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.45" />
+
+  <!-- 4 Tiny Scanner Tick Marks at 12, 3, 6, 9 o'clock -->
+  <rect x="15.5" y="1" width="1" height="2" rx="0.2" fill="#ffffff" fill-opacity="0.3" /> <!-- 12 o'clock -->
+  <rect x="29" y="15.5" width="2" height="1" rx="0.2" fill="#ffffff" fill-opacity="0.3" /> <!-- 3 o'clock -->
+  <rect x="15.5" y="29" width="1" height="2" rx="0.2" fill="#ffffff" fill-opacity="0.3" /> <!-- 6 o'clock -->
+  <rect x="1" y="15.5" width="2" height="1" rx="0.2" fill="#ffffff" fill-opacity="0.3" /> <!-- 9 o'clock -->
+
+  <!-- Layer 3: SC Monogram -->
+  <text x="16" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff" fill-opacity="0.85" text-anchor="middle" letter-spacing="-0.5px" filter="url(#neonGlow)">SC</text>
+
+  <!-- Layer 4: Glass Border on Canvas -->
+  <rect x="0.375" y="0.375" width="31.25" height="31.25" rx="6.625" fill="none" stroke="url(#glassStroke)" stroke-width="0.75" />
+</svg>
