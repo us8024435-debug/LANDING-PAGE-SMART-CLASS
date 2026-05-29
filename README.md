@@ -1,7 +1,7 @@
 # 🏫 Smart Class: Next-Gen AI-Powered Biometric Attendance System
 
 <div align="center">
-  <img src="https://smart-class-attendance.vercel.app/images/og-cover.png" alt="Smart Class Cover" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
+  <img src="https://landing-page-smart-class-q221.vercel.app/" alt="Smart Class Cover" width="100%" style="border-radius: 12px; margin-bottom: 20px;" />
   
   [![Next.js](https://img.shields.io/badge/Next.js-15.4.9-black?logo=next.js&style=flat-round)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/React-19.2.1-blue?logo=react&style=flat-round)](https://react.dev/)
